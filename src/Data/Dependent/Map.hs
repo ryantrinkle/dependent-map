@@ -1046,7 +1046,7 @@ instance OrdTag k => Ord (DMap k) where
 {--------------------------------------------------------------------
   Read
 --------------------------------------------------------------------}
-
+{-
 instance (GCompare f, ReadTag f) => Read (DMap f) where
   readPrec = parens $ prec 10 $ do
     Ident "fromList" <- lexP
@@ -1054,7 +1054,7 @@ instance (GCompare f, ReadTag f) => Read (DMap f) where
     return (fromList xs)
 
   readListPrec = readListPrecDefault
-
+-}
 {--------------------------------------------------------------------
   Show
 --------------------------------------------------------------------}

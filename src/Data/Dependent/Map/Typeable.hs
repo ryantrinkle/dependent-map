@@ -1,4 +1,7 @@
 {-# LANGUAGE CPP #-}
+#if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 707
+{-# LANGUAGE StandaloneDeriving #-}
+#endif
 #if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 702
 {-# LANGUAGE Trustworthy #-}
 #endif
@@ -7,7 +10,11 @@ module Data.Dependent.Map.Typeable where
 import Data.Dependent.Map.Internal
 import Data.Typeable
 
-#if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 702
+#if defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 707
+
+deriving instance Typeable DMap
+
+#elif defined(__GLASGOW_HASKELL__) && __GLASGOW_HASKELL__ >= 702
 
 instance Typeable1 f => Typeable (DMap f) where
     typeOf ds = mkTyConApp dMapCon [typeOfT]

@@ -25,6 +25,7 @@ instance GShow f => Show (Key f) where
         ( showString "Key "
         . gshowsPrec 11 k
         )
+{-
 instance GRead f => Read (Key f) where
     readsPrec p = readParen (p>10) $ \s ->
         [ (withTag Key, rest')
@@ -32,7 +33,7 @@ instance GRead f => Read (Key f) where
         , con == "Key "
         , (withTag, rest') <- greadsPrec 11 rest
         ]
-
+-}
 -- |Dependent maps: f is a GADT-like thing with a facility for 
 -- rediscovering its type parameter, elements of which function as identifiers
 -- tagged with the type of the thing they identify.  Real GADTs are one
